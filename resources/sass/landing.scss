@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Variables
+@import 'variables';
+
+// Custom
+@import "custom";
+
+
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.after-yelow:after {
+	background: rgb(234,167,71);
+	background: -moz-linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	background: -webkit-linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	background: linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	content: '';
+	display: block;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eaa747",endColorstr="#ffdc77",GradientType=1);
+	height: 2px;
+	margin: 30px auto 0;
+	width: 100px;
+}
+
+.after-yelow-start:after {
+	background: rgb(234,167,71);
+	background: -moz-linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	background: -webkit-linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	background: linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	content: '';
+	display: block;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eaa747",endColorstr="#ffdc77",GradientType=1);
+	height: 2px;
+	margin-top: 30px;
+	width: 100px;
+}
+
+.accordion-button::after {
+	background-image: url(../img/landing/plus.svg);
+}
+.accordion-button:not(.collapsed)::after {
+	background-image: url(../img/landing/less.svg);
+}
+
+.bg-yellow {
+	background-color: rgb(234,167,71);
+	background: -moz-linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	background: -webkit-linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	background: linear-gradient(90deg, rgba(234,167,71,1) 0%, rgba(255,220,119,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eaa747",endColorstr="#ffdc77",GradientType=1);
+}
+
+.border-yellow {
+	border-color: #f3be5c !important;
+}
+
+#cta {
+	background: url(../img/landing/points.png) no-repeat center bottom;
+	background-size: cover;
+	background-attachment: fixed;
+
+	img.img {
+		margin-bottom: -180px
+	}
+}
+
+.accordion-button:focus {
+	border: none;
+	box-shadow: none;
+}
+.accordion-button:not(.collapsed) {
+	background: #FFF;
+	color: inherit;
+	font-weight: 600;
+}
+
+.carousel-control-prev, .carousel-control-next {
+	bottom: inherit;
+}
+
+.carousel-control-prev {
+	left: 30px;
+}
+.carousel-control-next {
+	right: 30px;
+}
+
+@media (max-width: 767px) {
+	header nav {
+		background: #000;
+		height: 100%;
+		padding: 30px;
+		position: fixed;
+		right: -230px;
+		top: 0;
+		transition: all ease-in-out .3s;
+		width: 230px;
+		z-index: 5;
+
+		a {
+			display: block;
+		}
+
+		&.view {
+			right: 0;
+		}
+	}
+}

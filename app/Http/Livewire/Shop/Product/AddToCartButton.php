@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Http\Livewire\Shop\Product;
+
+use Livewire\Component;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\Setting;
+
+class AddToCartButton extends Component
+{
+    public $shop, $product, $options = [];
+
+    public function addItem()
+    {
+        $settings = Setting::first();
+
+        //Precio
+        $price = '';
+        $price_regular = (($this -> product -> price_cost * $settings -> dolar) * $this -> product -> price_regular / 100) + ($this -> product -> price_cost * $settings -> dolar);
+        if ( $this -> product -> price_sale ) :
+            $price = $price_regular - ($price_regular * $this -> product -> price_sale/100);
+        else :
+            $price = $price_regular;
+        endif;
+
+        $this -> options['image'] = $this -> product -> image ?? 'img/shop/default.png';
+        $this -> options['sku'] = $this -> product -> sku;
+        $this -> options['price_cost_usd'] = $this -> product -> price_cost;
+        $this -> options['price_cost_ars'] = $this -> product -> price_cost * $settings -> dolar;
+        $this -> options['price_regular'] = $price_regular;
+        if ( $this -> product -> price_sale ) {
+            $this -> options['price_sale'] = $price_regular - ($price_regular * $this -> product -> price_sale/100);
+        }
+
+        $itemAdded = Cart::add([
+            'id' => $this -> product -> id,
+            'name' => $this -> product -> name,
+            'qty' => 1,
+            'price' => $price,
+            'weight' => $this -> product -> weight ?? 0,
+            'options' => $this -> options
+        ]);
+
+        if ( $this -> product -> quantity < $itemAdded -> qty ) {
+            Cart::update($itemAdded -> rowId, $itemAdded -> qty - 1);
+            $this -> emit('notStock');
+        } else {
+            $this -> emit('added');
+        }
+
+        $this -> emitTo('shop.cart-icon', 'render', [$this -> shop]);
+    }
+
+    public function render()
+    {
+        return view('livewire.shop.product.add-to-cart-button');
+    }
+}
