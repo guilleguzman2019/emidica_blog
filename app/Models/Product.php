@@ -78,7 +78,9 @@ class Product extends Model
     public function scopeCategoryId($query, $category_id)
     {
         if ( trim( $category_id ) ) {
-            $category = Category::where('id', $category_id) -> first();
+            
+            
+            
             $cats[] = $category -> id;
             foreach ($category -> children as $cat) {
                 $cats[] = $cat -> id;

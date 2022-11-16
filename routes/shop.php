@@ -20,8 +20,16 @@ Route::post('/webhooks_suscriptions', Controllers\WebhookController::class);
 
 //BLOG
 
-Route::get('/blog', [Controllers\HomeController::class, 'index'])->name('blog');
+Route::get('/blog', function () {
+    return view('blog');
+});
+
+//Route::get('/blog', [Controllers\HomeController::class, 'index'])->name('blog');
 Route::get('/blog/{entrada}', [Controllers\HomeController::class, 'post'])->name('blog');
+
+Route::get('/category/{category_slug?}', [Controllers\HomeController::class, 'category'])->name('home.category');
+
+Route::get('/tag/{tag}', [Controllers\HomeController::class, 'tag'])->name('home.tag');
 
 
 

@@ -24,6 +24,12 @@ class Post extends Model
         return $this -> hasMany(PostTag::Class);
     }
 
+    public function scopeSearch($query, $search)
+    {
+        if ( trim( $search ) )
+            return $query -> where(\DB::raw("CONCAT(title, ' ', body)"), 'LIKE', '%' . $search . '%');
+    }
+
     //URL friendly
     public function getRouteKeyName()
     {

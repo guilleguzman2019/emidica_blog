@@ -13,14 +13,7 @@
         <div class="container d-flex align-items-center justify-content-between">
             <a href="{{ url('/') }}"><img src="{{ asset('img/logo.svg') }}" height="42"></a>
 
-            <button class="bg-transparent border-0 p-0 m-0 d-block d-sm-none" style="width:35px" onclick="$('header nav').toggleClass('view')">
-                <span class="d-block mb-1 bg-white" style="height: 2px;"></span>
-                <span class="d-block mb-1 bg-white" style="height: 2px;"></span>
-                <span class="d-block mb-1 bg-white" style="height: 2px;"></span>
-            </button>
-
             <nav class="fs-14">
-                <button class="bg-transparent border-0 p-0 m-0 d-block d-sm-none text-white fs-24 lh-1 mb-5" onclick="$('header nav').toggleClass('view')">&times;</button>
 
                 <a href="#home" class="text-white ms-sm-4 mb-3 mb-sm-0" onclick="$('header nav').removeClass('view')"></a>
                 <a href="#what-we-offer" class="text-white ms-sm-4 mb-3 mb-sm-0" onclick="$('header nav').removeClass('view')"></a>
@@ -55,7 +48,7 @@
                     <!-- Preview image figure-->
                     <div class="col ratio ratio-4x3 bg-img me-3 rounded-3 " style="background-image: url('/{{$post -> image}}')"></div>
                     <!-- Post content-->
-                    <section class="mb-5">
+                    <section class="mb-3 p-3">
                         <p class="fs-5 mb-4">{!!$post->body!!}</p>
                     </section>
 
@@ -67,14 +60,14 @@
                         }
                     @endphp
 
-                    @foreach ($post_Tags as $tag)
 
-                        <div>
-                            <h5><span class="badge bg-warning">{{$tag}}</span></h5>
-                        </div>
-
-                    @endforeach
-
+                    <div class="">
+                        @foreach ($post_Tags as $tag)
+                            
+                                <span class="badge bg-warning">{{$tag}}</span>
+                            
+                        @endforeach
+                    </div>
                 </article>
                 <!-- Comments section-->
             </div>
@@ -84,8 +77,7 @@
                 <div class="card mb-4 border-0">
                     <div class="card-body">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Buscar..." aria-label="Enter search term..." aria-describedby="button-search" />
-                            <button class="btn btn-primary" id="button-search" type="button" style="display:none;">Go!</button>
+                            <livewire:blog.search/>
                         </div>
                     </div>
                 </div>
@@ -99,6 +91,13 @@
         </div>
     </div>
     <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container text-white text-center">
+            <img src="{{ asset('img/logo.svg') }}" height="70" class="f-brightness mb-3">
+            <p class="fs-12 text-white fw-300 m-0">Copyright © {{ date('Y') }} Emidica. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    @livewireScripts
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

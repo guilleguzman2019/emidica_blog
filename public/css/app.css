@@ -13,3 +13,52 @@
     display:flex !important;
     text-align: center;
 }
+
+
+
+.media{
+
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+
+.lpa-left{
+
+  width: 250px;
+}
+
+
+
+.pagination > li > a
+{
+    background-color: white;
+    color: #5A4181;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active >span
+{
+    color: white;
+    background-color: #ffc107 !Important;
+    border: solid 1px #ffc107 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181;
+}
+
+
